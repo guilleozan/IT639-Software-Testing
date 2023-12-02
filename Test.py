@@ -18,35 +18,42 @@ class TestBowlingGame(unittest.TestCase):
         assert self.game.score () == 0
         
     def test_all_ones(self):
-        
-        self.rollMany(1, 20)
+        # test a game where all rolls knock down one pin.
+        self.roll_many(1, 20)
         assert self.game.score () == 20
         
     def test_one_spare(self):
+        # Test a game with a spare in the first frame
         self.game.rolls(5)
         self.game.rolls(5)
         self.game.rolls(3)
-        self.rollMany(0,17)
+        self.roll_many (0,17)
         assert self.game.score () == 16
         
     def test_one_strike(self):
+        # Test a game with a strike in the first frame.
         self.game.rolls(10)
         self.game.rolls(4)
         self.game.rolls(3)
-        self.rollMany(0,16)
+        self.roll_many(0,16)
         assert  self.game.score () == 24
         
     def test_perfect_game(self):
-        self.rollMany(10,12)
+        # Test a perfect game with strikes in all frames.
+        self.roll_many(10,12)
         assert self.game.score () == 300
         
     def test_one_spare(self):
-        self.rollMany(5,21)
+        # Test a game with one spare in all frames.
+        self.roll_many(5,21)
         assert self.game.score () == 150
         
     def roll_many(self, pins,rolls):
+        # Roll the ball multiple times with the same number of pins knocked down.
         for i in range(rolls):
             self.game.rolls(pins)
 			
 
+if __name__ == '__main__':
+    unittest.main()
 
