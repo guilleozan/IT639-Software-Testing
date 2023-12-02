@@ -1,6 +1,3 @@
-
-
-
 import unittest
 import BowlingGame
 
@@ -17,7 +14,7 @@ class TestBowlingGame(unittest.TestCase):
             self.game.roll(0)
         assert self.game.score () == 0
         
-    breakpoint()
+  
     def test_all_ones(self):
         # test a game where all roll knock down one pin.
         self.roll_many(1, 20)
